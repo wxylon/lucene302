@@ -97,8 +97,7 @@ public class Indexer {
 		// doc.add(new Field("contents",text,Field.Store.YES,
 		// Field.Index.ANALYZED));
 		doc.add(new Field("contents", new FileReader(f)));
-		doc.add(new Field("filename", f.getCanonicalPath(), Field.Store.YES,
-				Field.Index.ANALYZED));
+		doc.add(new Field("filename", f.getCanonicalPath(), Field.Store.YES, Field.Index.ANALYZED));
 		writer.addDocument(doc);
 	}
 
