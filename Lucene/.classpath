@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/junit-3.8.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/servlet-api-2.4.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/apache-solr-core-1.4.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jakarta-regexp-1.4.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
