@@ -913,8 +913,8 @@ public abstract class IndexReader implements Cloneable,Closeable {
     return n;
   }
 
-  /** Undeletes all documents currently marked as deleted in this index.
-   *
+  /** 
+   * 把这些标记为删除的文档恢复过来
    * @throws StaleReaderException if the index has changed
    *  since this reader was opened
    * @throws LockObtainFailedException if another writer

@@ -856,16 +856,11 @@ public class IndexWriter implements Closeable {
   }
 
   /**
-   * Constructs an IndexWriter for the index in <code>d</code>.
-   * Text will be analyzed with <code>a</code>.  If <code>create</code>
-   * is true, then a new, empty index will be created in
-   * <code>d</code>, replacing the index already there, if any.
-   *
-   * @param d the index directory
-   * @param a the analyzer to use
-   * @param create <code>true</code> to create the index or overwrite
-   *  the existing one; <code>false</code> to append to the existing
-   *  index
+   * 类能创建一个新的索引或者打开一个已存在的索引并为该所引添加文档
+   * @param d 指定了存储索引文件的路径。
+   * @param a 指定了在索引过程中使用什么样的分词器
+   * @param create 布尔变量，如果值为<code>真</code>，那么就表示要创建一个新的索引，
+   * 			   如果 值为<code>假</code>，就表示打开一个已经存在的索引
    * @param mfl Maximum field length in number of terms/tokens: LIMITED, UNLIMITED, or user-specified
    *   via the MaxFieldLength constructor.
    * @throws CorruptIndexException if the index is corrupt
@@ -2208,6 +2203,7 @@ public class IndexWriter implements Closeable {
   private static PrintStream defaultInfoStream = null;
 
   /**
+   * 优化索引，使多个Segments变成一个Segments   
    * Requests an "optimize" operation on an index, priming the index
    * for the fastest available search. Traditionally this has meant
    * merging all segments into a single segment as is done in the
@@ -2269,6 +2265,7 @@ public class IndexWriter implements Closeable {
   }
 
   /**
+   * 指定最大Segments的数量 
    * Optimize the index down to <= maxNumSegments.  If
    * maxNumSegments==1 then this is the same as {@link
    * #optimize()}.
@@ -2284,7 +2281,8 @@ public class IndexWriter implements Closeable {
     optimize(maxNumSegments, true);
   }
 
-  /** Just like {@link #optimize()}, except you can specify
+  /** 前面的方面都是优化完成之后再返回，这个方法的参数如果是FALSE的话，就直接返回，再开一个线程来优化
+   * Just like {@link #optimize()}, except you can specify
    *  whether the call should block until the optimize
    *  completes.  This is only meaningful with a
    *  {@link MergeScheduler} that is able to run merges in
@@ -2298,7 +2296,8 @@ public class IndexWriter implements Closeable {
     optimize(1, doWait);
   }
 
-  /** Just like {@link #optimize(int)}, except you can
+  /** 前面两个参数的组合
+   * Just like {@link #optimize(int)}, except you can
    *  specify whether the call should block until the
    *  optimize completes.  This is only meaningful with a
    *  {@link MergeScheduler} that is able to run merges in
