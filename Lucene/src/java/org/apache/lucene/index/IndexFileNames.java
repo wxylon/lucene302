@@ -22,17 +22,17 @@ package org.apache.lucene.index;
  */
 final class IndexFileNames {
 
-  /** Name of the index segment file */
+  /** 索引段文件名 */
   static final String SEGMENTS = "segments";
 
-  /** Name of the generation reference file name */
+  /** generation reference文件名 */
   static final String SEGMENTS_GEN = "segments.gen";
   
   /** Name of the index deletable file (only used in
    * pre-lockless indices) */
   static final String DELETABLE = "deletable";
    
-  /** Extension of norms file */
+  /** norms file的扩展名 */
   static final String NORMS_EXTENSION = "nrm";
 
   /** Extension of freq postings file */
@@ -62,19 +62,19 @@ final class IndexFileNames {
   /** Extension of vectors index file */
   static final String VECTORS_INDEX_EXTENSION = "tvx";
 
-  /** Extension of compound file */
+  /** 复合文件扩展名 */
   static final String COMPOUND_FILE_EXTENSION = "cfs";
 
   /** Extension of compound file for doc store files*/
   static final String COMPOUND_FILE_STORE_EXTENSION = "cfx";
 
-  /** Extension of deletes */
+  /** 删除文件扩展名 */
   static final String DELETES_EXTENSION = "del";
 
   /** Extension of field infos */
   static final String FIELD_INFOS_EXTENSION = "fnm";
 
-  /** Extension of plain norms */
+  /** plain norms扩展名 */
   static final String PLAIN_NORMS_EXTENSION = "f";
 
   /** Extension of separate norms */
@@ -84,6 +84,7 @@ final class IndexFileNames {
   static final String GEN_EXTENSION = "gen";
 
   /**
+   *  Lucene的全部索引文件扩展名列表
    * This array contains all filename extensions used by
    * Lucene's index files, with two exceptions, namely the
    * extension made up from <code>.f</code> + a number and
@@ -165,7 +166,6 @@ final class IndexFileNames {
    * generation.  If the generation is -1, the file name is
    * null.  If it's 0, the file name is <base><extension>.
    * If it's > 0, the file name is <base>_<generation><extension>.
-   *
    * @param base -- main part of the file name
    * @param extension -- extension of the filename (including .)
    * @param gen -- generation
