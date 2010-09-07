@@ -37,17 +37,13 @@ public final class Field extends AbstractField implements Fieldable, Serializabl
   /** Specifies whether and how a field should be stored. */
   public static enum Store {
 
-    /** Store the original field value in the index. This is useful for short texts
-     * like a document's title which should be displayed with the results. The
-     * value is stored in its original form, i.e. no analyzer is used before it is
-     * stored.
-     */
+    /** 则表示存储此域*/
     YES {
       @Override
       public boolean isStored() { return true; }
     },
 
-    /** Do not store the field value in the index. */
+    /** 则表示不存储此域 */
     NO {
       @Override
       public boolean isStored() { return false; }
@@ -59,9 +55,7 @@ public final class Field extends AbstractField implements Fieldable, Serializabl
   /** Specifies whether and how a field should be indexed. */
   public static enum Index {
 
-    /** Do not index the field value. This field can thus not be searched,
-     * but one can still access its contents provided it is
-     * {@link Field.Store stored}. */
+    /** 表示不被索引 */
     NO {
       @Override
       public boolean isIndexed()  { return false; }
@@ -71,9 +65,7 @@ public final class Field extends AbstractField implements Fieldable, Serializabl
       public boolean omitNorms()  { return true;  }   
     },
 
-    /** Index the tokens produced by running the field's
-     * value through an Analyzer.  This is useful for
-     * common text. */
+    /** 则表示不但被索引，而且被分词 */
     ANALYZED {
       @Override
       public boolean isIndexed()  { return true;  }
@@ -83,10 +75,7 @@ public final class Field extends AbstractField implements Fieldable, Serializabl
       public boolean omitNorms()  { return false; }   	
     },
 
-    /** Index the field's value without using an Analyzer, so it can be searched.
-     * As no analyzer is used the value will be stored as a single term. This is
-     * useful for unique Ids like product numbers.
-     */
+    /** 表示虽然被索引，但是不分词 */
     NOT_ANALYZED {
       @Override
       public boolean isIndexed()  { return true;  }
@@ -169,8 +158,7 @@ public final class Field extends AbstractField implements Fieldable, Serializabl
   /** Specifies whether and how a field should have term vectors. */
   public static enum TermVector {
     
-    /** Do not store term vectors. 
-     */
+    /** 表示不保存词向量 */
     NO {
       @Override
       public boolean isStored()      { return false; }
@@ -180,8 +168,7 @@ public final class Field extends AbstractField implements Fieldable, Serializabl
       public boolean withOffsets()   { return false; }
     },
     
-    /** Store the term vectors of each document. A term vector is a list
-     * of the document's terms and their number of occurrences in that document. */
+    /** 表示保存词向量 */
     YES {
       @Override
       public boolean isStored()      { return true;  }
@@ -191,11 +178,7 @@ public final class Field extends AbstractField implements Fieldable, Serializabl
       public boolean withOffsets()   { return false; }
     },
     
-    /**
-     * Store the term vector + token position information
-     * 
-     * @see #YES
-     */ 
+    /** 表示在词向量中保存位置信息 */ 
     WITH_POSITIONS {
       @Override
       public boolean isStored()      { return true;  }
@@ -205,11 +188,7 @@ public final class Field extends AbstractField implements Fieldable, Serializabl
       public boolean withOffsets()   { return false; }
     },
     
-    /**
-     * Store the term vector + Token offset information
-     * 
-     * @see #YES
-     */ 
+    /** 表示在词向量中保存偏移量信息 */ 
     WITH_OFFSETS {
       @Override
       public boolean isStored()      { return true;  }
