@@ -1,0 +1,7 @@
+http://www.lucene.com.cn/lucene.htm
+
+http://blog.chenlb.com/2009/08/lucene-scoring-architecture.html
+
+http://m.oschina.net/bbs/thread/7707
+
+http://m.oschina.net/p/lucene/discuss
