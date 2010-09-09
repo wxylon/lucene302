@@ -63,6 +63,7 @@ public abstract class IndexInput implements Cloneable,Closeable {
   }
 
   /** Reads four bytes and returns an int.
+   *  读出版本号
    * @see IndexOutput#writeInt(int)
    */
   public int readInt() throws IOException {
