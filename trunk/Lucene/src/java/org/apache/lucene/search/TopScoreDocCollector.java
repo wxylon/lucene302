@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import org.apache.lucene.index.IndexReader;
 
-/**
+/** 文档号收集器
  * A {@link Collector} implementation that collects the top-scoring hits,
  * returning them as a {@link TopDocs}. This is used by {@link IndexSearcher} to
  * implement {@link TopDocs}-based search. Hits are sorted by score descending
