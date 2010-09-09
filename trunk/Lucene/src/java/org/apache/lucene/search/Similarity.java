@@ -30,8 +30,10 @@ import java.util.IdentityHashMap;
 
 
 /** 
- * Expert: Scoring API.
- *
+ *	Expert: Scoring API.
+ *	影响打分的标准化因子(normalization factor)
+ *	部分，对文档的打分分两个部分，一部分是索引阶段计算的，与查询语句无关，一部分是搜索
+ *	阶段计算的，与查询语句相关。
  * <p>Similarity defines the components of Lucene scoring.
  * Overriding computation of these components is a convenient
  * way to alter Lucene scoring.
