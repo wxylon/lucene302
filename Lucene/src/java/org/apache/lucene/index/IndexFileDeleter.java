@@ -30,7 +30,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Collection;
 
-/*
+/* 其不是用来删除文档的，而是用来管理索引文件的。
+ * 在对文档的添加，删除，对段的合并的处理过程中，会生成很多新的文件，并需要删除老的文件，因而
+ * 需要管理。
+ * 然而要被删除的文件又可能在被用，因而要保存一个引用计数，仅仅当引用计数为零的时候，才执行删除。
+ * 下面这个例子能很好的说明IndexFileDeleter如何对文件引用计数并进行添加和删除的
  * This class keeps track of each SegmentInfos instance that
  * is still "live", either because it corresponds to a
  * segments_N file in the Directory (a "commit", i.e. a

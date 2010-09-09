@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 保存段信息，大家会发现，和segments_N中的信息几乎一一对应
  * A collection of segmentInfo objects with methods for operating on
  * those segments in relation to the file system.
  * 

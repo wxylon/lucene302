@@ -182,6 +182,7 @@ public class IndexWriter implements Closeable {
    */
   public static long WRITE_LOCK_TIMEOUT = 1000;
 
+  //获得锁的时间超时。当超时的时候，说明此索引文件夹已经被另一个IndexWriter打开了
   private long writeLockTimeout = WRITE_LOCK_TIMEOUT;
 
   /**
@@ -251,13 +252,15 @@ public class IndexWriter implements Closeable {
 
   private volatile long changeCount; // increments every time a change is completed
   private long lastCommitChangeCount; // last changeCount that was committed
-
+  
+  //当IndexWriter对索引进行了添加，删除文档操作后，可以调用commit将修改提交到文件中去，也可以调用rollback取消从上次commit到此时的修改
   private SegmentInfos rollbackSegmentInfos;      // segmentInfos we will fallback to if the commit fails
   private HashMap<SegmentInfo,Integer> rollbackSegments;
 
   volatile SegmentInfos pendingCommit;            // set when a commit is pending (after prepareCommit() & before commit())
   volatile long pendingCommitChangeCount;
-
+  
+  //此段信息主要用于将其他的索引文件夹合并到此索引文件夹的时候，为防止合并到一半出错可回滚所保存的原来的段信息
   private SegmentInfos localRollbackSegmentInfos;      // segmentInfos we will fallback to if the commit fails
   private int localFlushedDocCount;               // saved docWriter.getFlushedDocCount during local transaction
 
@@ -269,7 +272,7 @@ public class IndexWriter implements Closeable {
   private Set<SegmentInfo> segmentsToOptimize = new HashSet<SegmentInfo>();           // used by optimize to note those needing optimization
 
   private Lock writeLock;
-
+  //同tii和tis文件中的indexInterval
   private int termIndexInterval = DEFAULT_TERM_INDEX_INTERVAL;
 
   private boolean closed;
@@ -2001,7 +2004,7 @@ public class IndexWriter implements Closeable {
 
   /**
    * Deletes the document(s) containing <code>term</code>.
-   *
+   * 所有包含此词的文档都会被删除
    * <p><b>NOTE</b>: if this method hits an OutOfMemoryError
    * you should immediately close the writer.  See <a
    * href="#OOME">above</a> for details.</p>
