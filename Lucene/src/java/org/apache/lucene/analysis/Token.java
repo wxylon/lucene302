@@ -30,7 +30,7 @@ import org.apache.lucene.util.Attribute;
 import org.apache.lucene.util.AttributeSource;
 import org.apache.lucene.util.AttributeImpl;
 
-/** 
+/** 词元（单词）
   A Token is an occurrence of a term from the text of a field.  It consists of
   a term's text, the start and end offset of the term in the text of the field,
   and a type string.
