@@ -20,7 +20,8 @@ package org.apache.lucene.store;
 import org.apache.lucene.util.ThreadInterruptedException;
 import java.io.IOException;
 
-/** An interprocess mutex lock.
+/** 每一个索引文件夹只能打开一个IndexWriter，所以需要锁
+ * An interprocess mutex lock.
  * <p>Typical use might look like:<pre>
  * new Lock.With(directory.makeLock("my.lock")) {
  *     public Object doBody() {
