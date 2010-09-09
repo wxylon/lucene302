@@ -22,7 +22,8 @@ import org.apache.lucene.util.AttributeSource;
 import java.io.Reader;
 import java.io.IOException;
 
-/** A Tokenizer is a TokenStream whose input is a Reader.
+/** 分词组件
+ * A Tokenizer is a TokenStream whose input is a Reader.
   <p>
   This is an abstract class; subclasses must override {@link #incrementToken()}
   <p>
