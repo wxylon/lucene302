@@ -20,7 +20,7 @@ import org.apache.lucene.util.Version;
 public class Searcher {
 	private static String INDEX_DIR = "D:\\test\\index\\";
 	private static String KEYWORD = "玄德";
-	private static int TOP_NUM = 100;
+	private static int TOP_NUM = 10;
 
 	public static void main(String[] args) throws Exception {
 		File indexDir = new File(INDEX_DIR);
@@ -47,8 +47,7 @@ public class Searcher {
 				new StandardAnalyzer(Version.LUCENE_CURRENT));
 		Query query = parser.parse(q);
 
-		TopScoreDocCollector collector = TopScoreDocCollector.create(TOP_NUM,
-				false);
+		TopScoreDocCollector collector = TopScoreDocCollector.create(TOP_NUM,false);
 
 		long start = new Date().getTime();// start time
 
@@ -58,8 +57,7 @@ public class Searcher {
 		System.out.println(hits.length);
 		for (int i = 0; i < hits.length; i++) {
 			Document doc = is.doc(hits[i].doc);// new method is.doc()
-			System.out.println(doc.getField("filename") + "   "
-					+ hits[i].toString() + "  ");
+			System.out.println(doc.getField("filename") + "   "+ hits[i].toString() + "  ");
 		}
 		long end = new Date().getTime();// end time
 

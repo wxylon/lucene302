@@ -79,7 +79,6 @@ public class Indexer {
 
 	/**
 	 * 对单个txt文件进行索引
-	 * 
 	 * @param writer
 	 * @param f
 	 * @throws IOException
