@@ -32,8 +32,9 @@ import java.util.Arrays;
 
 /** Indexer for HTML files. */
 public class IndexHTML {
-	
-	private IndexHTML() {}
+
+	private IndexHTML() {
+	}
 
 	private static boolean deleting = false; // true during deletion pass
 	private static IndexReader reader; // existing index
@@ -109,8 +110,8 @@ public class IndexHTML {
 		if (!create) { // incrementally update
 
 			reader = IndexReader.open(FSDirectory.open(index), false); // open
-																		// existing
-																		// index
+			// existing
+			// index
 			uidIter = reader.terms(new Term("uid", "")); // init uid iterator
 
 			indexDocs(file);

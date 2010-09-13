@@ -23,44 +23,54 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
-//import org.apache.lucene.index.Term;
 
+// import org.apache.lucene.index.Term;
 
 /** Deletes documents from an index that do not contain a term. */
 public class DeleteFiles {
-  
-  private DeleteFiles() {}                         // singleton
 
-  /** Deletes documents from an index that do not contain a term. */
-  public static void main(String[] args) {
-    String usage = "java org.apache.lucene.demo.DeleteFiles <unique_term>";
-    if (args.length == 0) {
-      System.err.println("Usage: " + usage);
-      System.exit(1);
-    }
-    try {
-      Directory directory = FSDirectory.open(new File("index"));
-      IndexReader reader = IndexReader.open(directory, false); // we don't want read-only because we are about to delete
+	private DeleteFiles() {
+	} // singleton
 
-      Term term = new Term("path", args[0]);
-      int deleted = reader.deleteDocuments(term);
+	/** Deletes documents from an index that do not contain a term. */
+	public static void main(String[] args) {
+		String usage = "java org.apache.lucene.demo.DeleteFiles <unique_term>";
+		if (args.length == 0) {
+			System.err.println("Usage: " + usage);
+			System.exit(1);
+		}
+		try {
+			Directory directory = FSDirectory.open(new File("index"));
+			IndexReader reader = IndexReader.open(directory, false); // we
+																		// don't
+																		// want
+																		// read-only
+																		// because
+																		// we
+																		// are
+																		// about
+																		// to
+																		// delete
 
-      System.out.println("deleted " + deleted +
- 			 " documents containing " + term);
+			Term term = new Term("path", args[0]);
+			int deleted = reader.deleteDocuments(term);
 
-      // one can also delete documents by their internal id:
-      /*
-      for (int i = 0; i < reader.maxDoc(); i++) {
-        System.out.println("Deleting document with id " + i);
-        reader.delete(i);
-      }*/
+			System.out.println("deleted " + deleted + " documents containing "
+					+ term);
 
-      reader.close();
-      directory.close();
+			// one can also delete documents by their internal id:
+			/*
+			 * for (int i = 0; i < reader.maxDoc(); i++) {
+			 * System.out.println("Deleting document with id " + i);
+			 * reader.delete(i); }
+			 */
 
-    } catch (Exception e) {
-      System.out.println(" caught a " + e.getClass() +
-			 "\n with message: " + e.getMessage());
-    }
-  }
+			reader.close();
+			directory.close();
+
+		} catch (Exception e) {
+			System.out.println(" caught a " + e.getClass()
+					+ "\n with message: " + e.getMessage());
+		}
+	}
 }
