@@ -862,8 +862,8 @@ public class IndexWriter implements Closeable {
    * 类能创建一个新的索引或者打开一个已存在的索引并为该所引添加文档
    * @param d 指定了存储索引文件的路径。
    * @param a 指定了在索引过程中使用什么样的分词器
-   * @param create 布尔变量，如果值为<code>真</code>，那么就表示要创建一个新的索引，
-   * 			   如果 值为<code>假</code>，就表示打开一个已经存在的索引
+   * @param create 布尔变量，如果值为<code>true</code>，那么就表示要创建一个新的索引，
+   * 			   如果 值为<code>false</code>，就表示打开一个已经存在的索引
    * @param mfl Maximum field length in number of terms/tokens: LIMITED, UNLIMITED, or user-specified
    *   via the MaxFieldLength constructor.
    * @throws CorruptIndexException if the index is corrupt
