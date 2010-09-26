@@ -1,10 +1,11 @@
 Lucene实现的包结构
-	• Lucene的analysis模块主要负责词法分析及语言处理而形成Term。
-	• Lucene的index模块主要负责索引的创建，里面有IndexWriter。
-	• Lucene的store模块主要负责索引的读写。
-	• Lucene的QueryParser主要负责语法分析。
-	• Lucene的search模块主要负责对索引的搜索。
-	• Lucene的similarity模块主要负责对相关性打分的实现。
+		org.apache.lucene.analysis			语言分析器，主要用于的切词，支持中文主要是扩展此类
+		org.apache.lucene.document			索引存储时的文档结构管理，类似于关系型数据库的表结构
+		org.apache.lucene.index				索引管理，包括索引建立、删除等
+		org.apache.lucene.queryParser		查询分析器，实现查询关键词间的运算，如与、或、非等
+		org.apache.lucene.search				检索管理，根据查询条件，检索得到结果
+		org.apache.lucene.store					数据存储管理，主要包括一些底层的I/O操作
+		org.apache.lucene.util					一些公用类
 
 Lucene的索引结构是有层次结构的，主要分以下几个层次：
 	• 索引(Index)：
